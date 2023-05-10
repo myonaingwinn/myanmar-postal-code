@@ -1,5 +1,7 @@
 setup:
 	docker compose exec api composer install
+	docker compose exec api cp .env.example .env
+	docker compose exec api php artisan key:generate
 	docker compose exec api php artisan storage:link
 	docker compose exec api chmod -R 777 storage bootstrap/cache
 
