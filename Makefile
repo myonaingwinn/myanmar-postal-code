@@ -23,3 +23,7 @@ down:
 restart:
 	@make down
 	@make up
+
+restart-b:
+	@make down
+	@make up-b
