@@ -8,6 +8,13 @@ setup:
 app:
 	docker compose exec api bash
 
+fe:
+	docker run -it --rm -v ./frontend:/frontend -w /frontend node:16-alpine sh
+
+run-fe:
+
+	docker run -it --rm -p 8080:5173 -v ./frontend:/frontend -w /frontend node:16-alpine npm run dev -- --host 0.0.0.0
+
 optimize:
 	docker compose exec api php artisan optimize
 
