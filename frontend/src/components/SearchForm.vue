@@ -12,6 +12,7 @@ export default {
   methods: {
     search() {
       if (this.keyword) {
+        // TODO: env setup
         axios
           .get('http://localhost:18000/api/v1/search', {
             params: this.axiosParams,
