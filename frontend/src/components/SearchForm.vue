@@ -12,14 +12,13 @@ export default {
   methods: {
     search() {
       if (this.keyword) {
-        // TODO: env setup
         axios
-          .get('http://localhost:18000/api/v1/search', {
+          .get(import.meta.env.VITE_BASE_URL, {
             params: this.axiosParams,
           })
           .then((res) => {
             this.tableData = res.data.result;
-            console.log('res', res);
+            // console.log('res', res);
           })
           .catch((error) => {
             console.error('err', error);
