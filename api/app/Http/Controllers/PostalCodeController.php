@@ -13,8 +13,8 @@ class PostalCodeController extends Controller
 
     public function index()
     {
-        $postalCodes = DB::collection(CollectionLang::MM)
-            ->take(5)
+        $postalCodes = DB::collection(CollectionLang::EN)
+            ->take(10)
             ->get();
 
         return response()->json(['PostalCodes' => $postalCodes]);
