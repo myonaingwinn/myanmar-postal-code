@@ -1,8 +1,8 @@
 <script>
 export default {
-  name: "HomeView",
+  name: 'HomeView',
   components: {
-    SearchForm: () => import("../components/SearchForm.vue"),
+    SearchForm: () => import('../components/SearchForm.vue'),
   },
 };
 </script>

@@ -1,10 +1,10 @@
-import Vue from "vue";
-import VueI18n from "vue-i18n";
-import Cookies from "js-cookie";
-import enLocale from "./en";
-import mmLocale from "./mm";
-import elementEnLocale from "element-ui/lib/locale/lang/en"; // element-ui lang
-import elementMmLocale from "element-ui/lib/locale/lang/en"; // FIXME: is this OK?
+import Vue from 'vue';
+import VueI18n from 'vue-i18n';
+import Cookies from 'js-cookie';
+import enLocale from './en';
+import mmLocale from './mm';
+import elementEnLocale from 'element-ui/lib/locale/lang/en'; // element-ui lang
+import elementMmLocale from 'element-ui/lib/locale/lang/en'; // FIXME: is this OK?
 
 Vue.use(VueI18n);
 
@@ -20,7 +20,7 @@ const messages = {
 };
 
 export function getLanguage() {
-  const chooseLanguage = Cookies.get("language");
+  const chooseLanguage = Cookies.get('language');
   if (chooseLanguage) return chooseLanguage;
 
   // if has not choose language
@@ -33,7 +33,7 @@ export function getLanguage() {
       return locale;
     }
   }
-  return "en";
+  return 'en';
 }
 
 const i18n = new VueI18n({

@@ -1,3 +1,3 @@
 ## Commands
 
-- Check __Makefile__ for details
+- Check **Makefile** for details

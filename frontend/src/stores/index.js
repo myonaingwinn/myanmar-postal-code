@@ -1,9 +1,9 @@
-import { defineStore } from "pinia";
-import Cookies from "js-cookie";
-import { getLanguage } from "../lang";
+import { defineStore } from 'pinia';
+import Cookies from 'js-cookie';
+import { getLanguage } from '../lang';
 
 const store = defineStore({
-  id: "store",
+  id: 'store',
   state: () => ({
     language: getLanguage(),
   }),
@@ -13,12 +13,12 @@ const store = defineStore({
   mutations: {
     SET_LANGUAGE: (state, language) => {
       state.language = language;
-      Cookies.set("language", language);
+      Cookies.set('language', language);
     },
   },
   actions: {
     setLanguage({ commit }, language) {
-      commit("SET_LANGUAGE", language);
+      commit('SET_LANGUAGE', language);
     },
   },
 });
