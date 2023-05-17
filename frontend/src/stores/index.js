@@ -1,19 +1,26 @@
 import { defineStore } from "pinia";
-import { LANGUAGE } from "../enums";
+import Cookies from "js-cookie";
+import { getLanguage } from "../lang";
 
 const store = defineStore({
-    id: "store",
-    state: () => ({
-        language: LANGUAGE.EN,
-    }),
-    getters: {
-        language: state => state.language,
+  id: "store",
+  state: () => ({
+    language: getLanguage(),
+  }),
+  getters: {
+    language: (state) => state.language,
+  },
+  mutations: {
+    SET_LANGUAGE: (state, language) => {
+      state.language = language;
+      Cookies.set("language", language);
     },
-    actions: {
-        setLanguage(lang) {
-            this.language = lang;
-        },
+  },
+  actions: {
+    setLanguage({ commit }, language) {
+      commit("SET_LANGUAGE", language);
     },
+  },
 });
 
 export default store;
