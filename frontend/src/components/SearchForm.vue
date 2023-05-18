@@ -17,8 +17,7 @@ export default {
             params: this.axiosParams,
           })
           .then((res) => {
-            this.tableData = res.data.result;
-            // console.log('res', res);
+            this.tableData = res.data;
           })
           .catch((error) => {
             console.error('err', error);
@@ -33,6 +32,8 @@ export default {
       const params = new URLSearchParams();
       params.append('keyword', this.keyword);
       params.append('lang', 'en');
+      params.append('page', 1);
+      params.append('pageSize', 10);
       return params;
     },
   },
