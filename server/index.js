@@ -4,7 +4,22 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+const allowedOrigins = [
+  'https://mm-postal-code.vercel.app',
+  process.env.ALLOWED_ORIGIN,
+];
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+};
+app.use(cors(corsOptions));
+
 const port = process.env.PORT || 3000;
 const uri = process.env.MONGODB_URI;
 
