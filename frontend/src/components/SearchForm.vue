@@ -13,11 +13,11 @@ export default {
     search() {
       if (this.keyword) {
         axios
-          .get(import.meta.env.VITE_BASE_URL, {
+          .get(import.meta.env.VITE_BASE_URL + '/search', {
             params: this.axiosParams,
           })
           .then((res) => {
-            this.tableData = res.data;
+            if (res.data) this.tableData = res.data;
           })
           .catch((error) => {
             console.error('err', error);
