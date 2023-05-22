@@ -17,7 +17,6 @@ export default {
             params: this.axiosParams,
           })
           .then((res) => {
-            console.log('🚀 ~ file: SearchForm.vue:20 ~ .then ~ res:', res);
             if (res.data) this.tableData = res.data;
           })
           .catch((error) => {
