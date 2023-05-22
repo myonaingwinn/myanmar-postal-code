@@ -13,7 +13,7 @@ export default {
     search() {
       if (this.keyword) {
         axios
-          .get(import.meta.env.VITE_BASE_URL, {
+          .get(import.meta.env.VITE_BASE_URL + '/search', {
             params: this.axiosParams,
           })
           .then((res) => {
