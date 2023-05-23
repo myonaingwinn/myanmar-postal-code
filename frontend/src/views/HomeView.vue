@@ -9,6 +9,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       keyword: '',
       tableData: [],
       pageData: {
@@ -34,6 +35,7 @@ export default {
     },
 
     fetchData() {
+      this.setLoading();
       if (this.keyword) {
         axios
           .get(import.meta.env.VITE_BASE_URL + '/search', {
@@ -47,9 +49,11 @@ export default {
               this.pageData.currentPage = currentPage;
               this.pageData.pageSize = pageSize;
             }
+            this.setLoading();
           })
           .catch((error) => {
             console.error('err', error);
+            this.setLoading();
           });
       }
     },
@@ -69,6 +73,10 @@ export default {
         totalItems: 0,
       };
     },
+
+    setLoading() {
+      this.loading = !this.loading;
+    },
   },
 
   computed: {
@@ -87,18 +95,20 @@ export default {
 <template>
   <div class="home">
     <search-form @setKeyword="getKeyword" />
-    <data-table :tableData="tableData" />
-    <el-pagination
-      v-if="pageData.totalItems > 10"
-      @size-change="handleSizeChange"
-      @current-change="handlePageChange"
-      :current-page="pageData.currentPage"
-      :page-sizes="[10, 15, 20]"
-      :page-size="pageData.pageSize"
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="pageData.totalItems"
-      background
-      class="pagination"
-    ></el-pagination>
+    <div v-loading="loading" class="loading-container">
+      <data-table :tableData="tableData" />
+      <el-pagination
+        v-if="pageData.totalItems > 10"
+        @size-change="handleSizeChange"
+        @current-change="handlePageChange"
+        :current-page="pageData.currentPage"
+        :page-sizes="[10, 15, 20]"
+        :page-size="pageData.pageSize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="pageData.totalItems"
+        background
+        class="pagination"
+      ></el-pagination>
+    </div>
   </div>
 </template>
