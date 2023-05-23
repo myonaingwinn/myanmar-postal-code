@@ -89,6 +89,10 @@ export default {
       return params;
     },
   },
+
+  created() {
+    document.title = 'Myanmar Postal Code';
+  },
 };
 </script>
 
@@ -96,7 +100,7 @@ export default {
   <div class="home">
     <search-form @setKeyword="getKeyword" />
     <div v-loading="loading" class="loading-container">
-      <data-table :tableData="tableData" />
+      <data-table v-if="tableData.length > 0" :tableData="tableData" />
       <el-pagination
         v-if="pageData.totalItems > 10"
         @size-change="handleSizeChange"
@@ -109,6 +113,7 @@ export default {
         background
         class="pagination"
       ></el-pagination>
+      <el-empty v-else description="👆 Type there..."></el-empty>
     </div>
   </div>
 </template>

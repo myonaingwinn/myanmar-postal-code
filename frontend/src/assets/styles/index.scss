@@ -1,10 +1,18 @@
 .app {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+
     .navbar {
         height: 50px;
         overflow: hidden;
         position: relative;
         box-shadow: #409eff6f 0px 20px 25px -5px, #409eff4f 0px 10px 10px -5px;
         margin: -7.6px -7px 0;
+
+        .app-name {
+            font-size: 20px;
+            font-weight: 800;
+            padding: 10px;
+        }
     }
 
     .search-form {
