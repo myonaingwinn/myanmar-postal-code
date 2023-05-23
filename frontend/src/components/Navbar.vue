@@ -1,5 +1,7 @@
 <template>
-  <div class="navbar"></div>
+  <div class="navbar">
+    <div class="app-name">Myanmar Postal Code</div>
+  </div>
 </template>
 
 <script>
