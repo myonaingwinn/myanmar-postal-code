@@ -9,24 +9,24 @@
 
     .search-form {
         text-align: center;
-        margin: 10em;
+        margin: 7em 10em 3em;
 
         .el-input {
-            width: 22em;
+            width: 23em;
         }
 
-        .data-table {
-            margin: 3em auto;
+    }
 
-            .el-table {
-                td.el-table__cell {
-                    border-bottom: 1px solid red !important;
-                }
+    .data-table {
+        margin: 2em auto;
+        min-width: 800px;
 
-                &.--border {
-                    border-right: 1px solid red !important;
-                }
-            }
-        }
+    }
+
+    // Pagination
+    .pagination {
+        text-align: center;
+        margin-left: 16vw;
+        width: 68%;
     }
 }
