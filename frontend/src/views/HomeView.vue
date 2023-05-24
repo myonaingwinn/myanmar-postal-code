@@ -116,7 +116,7 @@ export default {
         background
         class="pagination"
       ></el-pagination>
-      <el-empty v-else description="👆 Type there..."></el-empty>
+      <el-empty v-else class="empty"></el-empty>
     </div>
   </div>
 </template>
