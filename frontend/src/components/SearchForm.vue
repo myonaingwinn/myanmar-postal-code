@@ -4,11 +4,16 @@ export default {
   data() {
     return {
       keyword: '',
+      searchTimeout: null,
     };
   },
-  watch: {
-    keyword: function () {
-      this.$emit('setKeyword', this.keyword);
+  methods: {
+    setKeyword() {
+      clearTimeout(this.searchTimeout);
+
+      this.searchTimeout = setTimeout(() => {
+        this.$emit('setKeyword', this.keyword.trim());
+      }, 500);
     },
   },
 };
@@ -17,10 +22,11 @@ export default {
 <template>
   <div class="search-form">
     <el-input
-      placeholder="Type something"
+      placeholder="Search with anything"
       v-model="keyword"
       prefix-icon="el-icon-search"
       clearable
+      @input="setKeyword"
     >
     </el-input>
   </div>

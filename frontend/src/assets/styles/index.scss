@@ -1,5 +1,14 @@
 .app {
-    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-family: Poppins, Montserrat, 'Playfair Display', Nunito, Arial, sans-serif;
+
+    .el-input__inner {
+        font-family: inherit;
+    }
+
+    .el-table th {
+        font-family: Quicksand;
+        font-size: 16px;
+    }
 
     .navbar {
         height: 50px;
@@ -41,7 +50,7 @@
         position: relative;
 
         &::after {
-            content: "";
+            content: '';
             position: absolute;
             top: 100%;
             left: 0;
@@ -52,6 +61,10 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
+        }
+
+        .empty {
+            margin-top: 9em;
         }
     }
 }
