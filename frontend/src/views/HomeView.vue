@@ -94,7 +94,11 @@ export default {
         })
         .catch((error) => {
           console.error('Failed to copy Postal Code:', error);
-          this.$notify.error('Failed to copy Postal Code. Please try again.');
+          this.$notify.error({
+            title: 'Error',
+            message: 'Failed to copy Postal Code. Please try again.',
+            offset: 50,
+          });
         });
     },
   },
