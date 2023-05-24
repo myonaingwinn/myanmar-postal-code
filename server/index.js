@@ -36,7 +36,7 @@ client
     process.exit(1);
   });
 
-app.get('/', (res) => {
+app.get('/', (req, res) => {
   res.send('Welcome to the Express API!😎');
 });
 
