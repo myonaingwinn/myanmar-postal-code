@@ -59,23 +59,26 @@ export default {
     },
 
     getKeyword(param) {
-      if (param && typeof param === 'string') {
+      if (param.trim() !== '') {
         this.keyword = param;
 
         this.fetchData();
       }
 
-      // reset data to default
+      this.resetData();
+    },
+
+    setLoading() {
+      this.loading = !this.loading;
+    },
+
+    resetData() {
       this.tableData = [];
       this.pageData = {
         currentPage: 1,
         pageSize: 10,
         totalItems: 0,
       };
-    },
-
-    setLoading() {
-      this.loading = !this.loading;
     },
   },
 
