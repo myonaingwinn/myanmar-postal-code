@@ -80,6 +80,18 @@ export default {
         totalItems: 0,
       };
     },
+
+    copyText(text) {
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          this.$message.success('Postal Code copied!');
+        })
+        .catch((error) => {
+          console.error('Failed to copy Postal Code:', error);
+          this.$message.error('Failed to copy Postal Code. Please try again.');
+        });
+    },
   },
 
   computed: {
@@ -103,7 +115,11 @@ export default {
   <div class="home">
     <search-form @setKeyword="getKeyword" />
     <div v-loading="loading" class="loading-container">
-      <data-table v-if="tableData.length > 0" :tableData="tableData" />
+      <data-table
+        v-if="tableData.length > 0"
+        :tableData="tableData"
+        @copyText="copyText"
+      />
       <el-pagination
         v-if="pageData.totalItems > 10"
         @size-change="handleSizeChange"
@@ -116,7 +132,7 @@ export default {
         background
         class="pagination"
       ></el-pagination>
-      <el-empty v-else class="empty"></el-empty>
+      <el-empty v-if="pageData.totalItems < 1" class="empty"></el-empty>
     </div>
   </div>
 </template>

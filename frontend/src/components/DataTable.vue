@@ -1,6 +1,11 @@
 <script>
 export default {
   props: ['tableData'],
+  methods: {
+    copyText(text) {
+      this.$emit('copyText', text);
+    },
+  },
 };
 </script>
 <template>
@@ -19,11 +24,12 @@ export default {
       label="Quarter / Village Tract"
     >
     </el-table-column>
-    <el-table-column
-      prop="Postal Code"
-      label="Postal Code"
-      @cell-click="() => console.log('Hi')"
-    >
+    <el-table-column prop="Postal Code" label="Postal Code">
+      <template slot-scope="scope">
+        <div @click="copyText(scope.row[scope.column.property])">
+          {{ scope.row[scope.column.property] }}
+        </div>
+      </template>
     </el-table-column>
   </el-table>
 </template>
