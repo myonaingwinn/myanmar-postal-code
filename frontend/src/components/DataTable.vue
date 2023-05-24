@@ -1,5 +1,10 @@
 <script>
 export default {
+  data() {
+    return {
+      tooltipContent: 'Click to copy',
+    };
+  },
   props: ['tableData'],
   methods: {
     copyText(text) {
@@ -26,9 +31,16 @@ export default {
     </el-table-column>
     <el-table-column prop="Postal Code" label="Postal Code">
       <template slot-scope="scope">
-        <div @click="copyText(scope.row[scope.column.property])">
-          {{ scope.row[scope.column.property] }}
-        </div>
+        <el-tooltip
+          effect="light"
+          :content="tooltipContent"
+          placement="right"
+          popper-class="tooltip"
+        >
+          <div @click="copyText(scope.row[scope.column.property])">
+            {{ scope.row[scope.column.property] }}
+          </div>
+        </el-tooltip>
       </template>
     </el-table-column>
   </el-table>
