@@ -1,10 +1,23 @@
-version: "3"
+version: "3.8"
 services:
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "18000:80"
+  frontend:
+    image: node:18-alpine
     volumes:
-      - ./api:/var/www/html
+      - ./frontend:/frontend
+      - ./frontend/.env:/frontend/.env
+    working_dir: /frontend
+    command: sh -c "if [ ! -d 'node_modules' ]; then npm install; fi && if [ ! -f '.env' ]; then cp .env.example .env; fi && chmod 666 .env && npm run dev -- --host 0.0.0.0"
+    ports:
+      - "8080:5173"
+    depends_on:
+      - server
+
+  server:
+    image: node:18-alpine
+    volumes:
+      - ./server:/server
+      - ./server/.env:/server/.env
+    working_dir: /server
+    command: sh -c "if [ ! -d 'node_modules' ]; then npm install; fi && if [ ! -f '.env' ]; then cp .env.example .env; fi && chmod 666 .env && npm run dev"
+    ports:
+      - "3000:3000"
