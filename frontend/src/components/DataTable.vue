@@ -35,7 +35,7 @@ export default {
           effect="light"
           :content="tooltipContent"
           placement="right"
-          popper-class="tooltip"
+          popper-class="my-tooltip"
         >
           <div @click="copyText(scope.row[scope.column.property])">
             {{ scope.row[scope.column.property] }}

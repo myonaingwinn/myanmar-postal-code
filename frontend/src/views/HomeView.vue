@@ -85,11 +85,16 @@ export default {
       navigator.clipboard
         .writeText(text)
         .then(() => {
-          this.$message.success('Postal Code copied!');
+          this.$notify({
+            title: 'Success',
+            type: 'success',
+            message: 'Postal Code is successfully copied',
+            offset: 50,
+          });
         })
         .catch((error) => {
           console.error('Failed to copy Postal Code:', error);
-          this.$message.error('Failed to copy Postal Code. Please try again.');
+          this.$notify.error('Failed to copy Postal Code. Please try again.');
         });
     },
   },
