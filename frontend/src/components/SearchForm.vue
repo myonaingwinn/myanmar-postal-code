@@ -5,15 +5,21 @@ export default {
     return {
       keyword: '',
       searchTimeout: null,
+      oldFilteredValue: '',
     };
   },
   methods: {
     setKeyword() {
-      clearTimeout(this.searchTimeout);
+      const filteredValue = this.keyword.replace(/[^a-zA-Z0-9]/g, '');
 
-      this.searchTimeout = setTimeout(() => {
-        this.$emit('setKeyword', this.keyword.trim());
-      }, 500);
+      if (filteredValue !== this.oldFilteredValue) {
+        clearTimeout(this.searchTimeout);
+
+        this.searchTimeout = setTimeout(() => {
+          this.$emit('setKeyword', this.keyword.trim());
+        }, 500);
+      }
+      this.keyword = this.oldFilteredValue = filteredValue;
     },
   },
 };
