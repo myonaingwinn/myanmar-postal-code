@@ -16,20 +16,22 @@ export default {
 <template>
   <el-table
     :data="this.tableData"
+    :default-sort="{ prop: 'Quarter / Village Tract', order: 'asc' }"
     stripe
     border
-    height="530"
+    height="540"
     class="data-table"
   >
-    <el-table-column prop="Region" label="Region"> </el-table-column>
-    <el-table-column prop="Town / Township" label="Town / Township">
+    <el-table-column prop="Region" label="Region" sortable> </el-table-column>
+    <el-table-column prop="Town / Township" label="Town / Township" sortable>
     </el-table-column>
     <el-table-column
       prop="Quarter / Village Tract"
       label="Quarter / Village Tract"
+      sortable
     >
     </el-table-column>
-    <el-table-column prop="Postal Code" label="Postal Code">
+    <el-table-column prop="Postal Code" label="Postal Code" sortable>
       <template slot-scope="scope">
         <el-tooltip
           effect="light"
