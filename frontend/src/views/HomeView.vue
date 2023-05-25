@@ -49,16 +49,17 @@ export default {
               this.pageData.currentPage = currentPage;
               this.pageData.pageSize = pageSize;
             }
-            this.setLoading();
           })
           .catch((error) => {
             // console.error('err', error);
-            this.setLoading();
             this.$notify.error({
               title: 'Error',
               message: error.message,
               offset: 50,
             });
+          })
+          .finally(() => {
+            this.setLoading();
           });
       }
     },
