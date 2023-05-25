@@ -52,8 +52,13 @@ export default {
             this.setLoading();
           })
           .catch((error) => {
-            console.error('err', error);
+            // console.error('err', error);
             this.setLoading();
+            this.$notify.error({
+              title: 'Error',
+              message: error.message,
+              offset: 50,
+            });
           });
       }
     },
@@ -93,7 +98,7 @@ export default {
           });
         })
         .catch((error) => {
-          console.error('Failed to copy Postal Code:', error);
+          // console.error('Failed to copy Postal Code:', error);
           this.$notify.error({
             title: 'Error',
             message: 'Failed to copy Postal Code. Please try again.',
