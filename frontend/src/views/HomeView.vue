@@ -139,7 +139,7 @@ export default {
         @size-change="handleSizeChange"
         @current-change="handlePageChange"
         :current-page="pageData.currentPage"
-        :page-sizes="[10, 15, 20]"
+        :page-sizes="[10, 20, 30, 50]"
         :page-size="pageData.pageSize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="pageData.totalItems"
