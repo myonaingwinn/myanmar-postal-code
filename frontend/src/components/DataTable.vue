@@ -18,7 +18,7 @@ export default {
     :data="this.tableData"
     stripe
     border
-    style="width: 80%"
+    height="530"
     class="data-table"
   >
     <el-table-column prop="Region" label="Region"> </el-table-column>
