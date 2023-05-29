@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { MongoClient } = require('mongodb');
 const PostalCode = require('./models/PostalCodeModel');
+const getLanguage = require('./utils/getLanguage');
 require('dotenv').config();
 
 const app = express();
@@ -43,7 +44,7 @@ app.get('/', (req, res) => {
 app.get('/search', async (req, res) => {
   try {
     const keyword = req.query.keyword;
-    const language = req.query.lang || 'en';
+    const language = getLanguage(keyword);
     const page = parseInt(req.query.page) || 1; // Current page number
     const pageSize = parseInt(req.query.pageSize) || 10; // Number of items per page
 
