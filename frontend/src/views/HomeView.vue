@@ -128,26 +128,37 @@ export default {
 
 <template>
   <div class="home">
-    <search-form @setKeyword="getKeyword" />
-    <div v-loading="loading" class="loading-container">
-      <data-table
-        v-if="tableData.length > 0"
-        :tableData="tableData"
-        @copyText="copyText"
-      />
-      <el-pagination
-        v-if="pageData.totalItems > 10"
-        @size-change="handleSizeChange"
-        @current-change="handlePageChange"
-        :current-page="pageData.currentPage"
-        :page-sizes="[10, 20, 30, 50]"
-        :page-size="pageData.pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="pageData.totalItems"
-        background
-        class="pagination"
-      ></el-pagination>
-      <el-empty v-if="pageData.totalItems < 1" class="empty"></el-empty>
-    </div>
+    <el-row>
+      <el-col
+        class="content"
+        :xs="{ span: 20, offset: 2 }"
+        :sm="{ span: 22, offset: 1 }"
+        :md="{ span: 22, offset: 1 }"
+        :lg="{ span: 22, offset: 1 }"
+        :xl="{ span: 16, offset: 4 }"
+      >
+        <search-form @setKeyword="getKeyword" />
+        <div v-loading="loading" class="loading-container">
+          <data-table
+            v-if="tableData.length > 0"
+            :tableData="tableData"
+            @copyText="copyText"
+          />
+          <el-pagination
+            v-if="pageData.totalItems > 10"
+            @size-change="handleSizeChange"
+            @current-change="handlePageChange"
+            :current-page="pageData.currentPage"
+            :page-sizes="[10, 20, 30, 50]"
+            :page-size="pageData.pageSize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="pageData.totalItems"
+            background
+            class="pagination"
+          ></el-pagination>
+          <el-empty v-if="pageData.totalItems < 1" class="empty"></el-empty>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>

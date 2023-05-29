@@ -7,39 +7,31 @@
 
     .navbar {
         width: 100;
-        height: 50px;
+        height: 55px;
         overflow: hidden;
         position: relative;
-        box-shadow: #409eff6f 0px 20px 25px -5px, #409eff4f 0px 10px 10px -5px;
-        margin: -7.6px -7px 0;
+        box-shadow: #40a0ff49 0px 20px 25px -5px, #40a0ff33 0px 10px 10px -5px;
+        margin: -7.6px -7px 60px;
 
         .app-name {
             font-size: 20px;
             font-weight: 800;
-            padding: 10px;
+            padding: 11px;
         }
 
         .nav-col {
-            padding-top: 6.5px;
-        }
-    }
-
-    .search-form {
-        text-align: center;
-        margin: 7em 10em 3em;
-
-        .el-input {
-            width: 23em;
+            padding-top: 9px;
         }
     }
 
     .data-table {
         margin: 2em auto;
-        min-width: 800px;
-        width: 80%;
+        // min-width: 800px;
+        // width: 80%;
 
         th {
-            background: #f3f3f3;
+            background: #56a3f033;
+            color: #556;
 
             div {
                 font-family: Quicksand;
@@ -49,11 +41,9 @@
     }
 
     // Pagination
-    .pagination {
-        text-align: center;
-        margin-left: 16vw;
-        width: 68%;
-    }
+    // .pagination {
+    //     width: 50%;
+    // }
 
     // Loading
     .loading-container {
@@ -72,10 +62,22 @@
         }
 
         .empty {
-            margin-top: 9em;
+            margin: 9em;
         }
     }
 
+    // About
+    .about,
+    .home {
+        background: white;
+
+        .content {
+            box-shadow: 0 2px 4px #40a0ff6e, 0 0 6px #40a0ff42;
+            border-radius: 8px;
+            padding: 20px;
+            overflow: auto;
+        }
+    }
 }
 
 .my-tooltip {

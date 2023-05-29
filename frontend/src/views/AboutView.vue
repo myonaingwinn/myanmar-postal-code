@@ -1,15 +1,19 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <el-row>
+      <el-col class="content" :span="16" :offset="4">
+        <h1>This is an about page</h1>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
+<script>
+export default {
+  methods: {
+    goBack() {
+      console.log('go back');
+    },
+  },
+};
+</script>
