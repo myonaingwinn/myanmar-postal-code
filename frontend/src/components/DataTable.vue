@@ -1,10 +1,5 @@
 <script>
 export default {
-  data() {
-    return {
-      tooltipContent: 'Click to copy',
-    };
-  },
   props: ['tableData'],
   methods: {
     copyText(text) {
@@ -22,20 +17,29 @@ export default {
     height="540"
     class="data-table"
   >
-    <el-table-column prop="Region" label="Region" sortable> </el-table-column>
-    <el-table-column prop="Town / Township" label="Town / Township" sortable>
+    <el-table-column prop="Region" :label="$t('table.region')" sortable>
     </el-table-column>
     <el-table-column
-      prop="Quarter / Village Tract"
-      label="Quarter / Village Tract"
+      prop="Town / Township"
+      :label="$t('table.townOrTwnsp')"
       sortable
     >
     </el-table-column>
-    <el-table-column prop="Postal Code" label="Postal Code" sortable>
+    <el-table-column
+      prop="Quarter / Village Tract"
+      :label="$t('table.quarterOrVillageTract')"
+      sortable
+    >
+    </el-table-column>
+    <el-table-column
+      prop="Postal Code"
+      :label="$t('table.postalCode')"
+      sortable
+    >
       <template slot-scope="scope">
         <el-tooltip
           effect="light"
-          :content="tooltipContent"
+          :content="$t('table.tooltip.content')"
           placement="right"
           popper-class="my-tooltip"
         >

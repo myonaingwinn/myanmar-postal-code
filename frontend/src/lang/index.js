@@ -1,10 +1,8 @@
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
-import Cookies from 'js-cookie';
 import enLocale from './en';
 import mmLocale from './mm';
 import elementEnLocale from 'element-ui/lib/locale/lang/en'; // element-ui lang
-import elementMmLocale from 'element-ui/lib/locale/lang/en'; // FIXME: is this OK?
 
 Vue.use(VueI18n);
 
@@ -15,12 +13,11 @@ const messages = {
   },
   mm: {
     ...mmLocale,
-    ...elementMmLocale,
   },
 };
 
 export function getLanguage() {
-  const chooseLanguage = Cookies.get('language');
+  const chooseLanguage = localStorage.getItem('language');
   if (chooseLanguage) return chooseLanguage;
 
   // if has not choose language

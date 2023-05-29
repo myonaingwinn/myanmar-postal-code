@@ -10,7 +10,10 @@ export default {
   },
   methods: {
     setKeyword() {
-      const filteredValue = this.keyword.replace(/[^a-zA-Z0-9]/g, '');
+      const filteredValue = this.keyword.replace(
+        /[^a-zA-Z0-9\u1000-\u109F\s]/g,
+        ''
+      );
 
       if (filteredValue !== this.oldFilteredValue) {
         clearTimeout(this.searchTimeout);
@@ -28,7 +31,7 @@ export default {
 <template>
   <div class="search-form">
     <el-input
-      placeholder="Search with anything"
+      :placeholder="$t('search.placeholder')"
       v-model="keyword"
       prefix-icon="el-icon-search"
       clearable

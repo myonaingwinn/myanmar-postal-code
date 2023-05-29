@@ -5,12 +5,8 @@
         font-family: inherit;
     }
 
-    .el-table th {
-        font-family: Quicksand;
-        font-size: 15px;
-    }
-
     .navbar {
+        width: 100;
         height: 50px;
         overflow: hidden;
         position: relative;
@@ -21,6 +17,10 @@
             font-size: 20px;
             font-weight: 800;
             padding: 10px;
+        }
+
+        .nav-col {
+            padding-top: 6.5px;
         }
     }
 
@@ -37,6 +37,15 @@
         margin: 2em auto;
         min-width: 800px;
         width: 80%;
+
+        th {
+            background: #f3f3f3;
+
+            div {
+                font-family: Quicksand;
+                font-size: 16px;
+            }
+        }
     }
 
     // Pagination

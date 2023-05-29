@@ -94,7 +94,7 @@ export default {
           this.$notify({
             title: 'Success',
             type: 'success',
-            message: 'Postal Code is successfully copied',
+            message: this.$t('home.notify.success'),
             offset: 50,
           });
         })
@@ -102,7 +102,7 @@ export default {
           // console.error('Failed to copy Postal Code:', error);
           this.$notify.error({
             title: 'Error',
-            message: 'Failed to copy Postal Code. Please try again.',
+            message: this.$t('home.notify.failed'),
             offset: 50,
           });
         });
@@ -113,7 +113,7 @@ export default {
     axiosParams() {
       const params = new URLSearchParams();
       params.append('keyword', this.keyword);
-      params.append('lang', 'en');
+      params.append('lang', this.$pinia.state.currentLanguage);
       params.append('page', this.pageData.currentPage);
       params.append('pageSize', this.pageData.pageSize);
       return params;
