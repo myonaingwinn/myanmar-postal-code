@@ -30,13 +30,23 @@ export default {
 
 <template>
   <div class="search-form">
-    <el-input
-      :placeholder="$t('search.placeholder')"
-      v-model="keyword"
-      prefix-icon="el-icon-search"
-      clearable
-      @input="setKeyword"
-    >
-    </el-input>
+    <el-row>
+      <el-col
+        :xs="{ span: 12, offset: 6 }"
+        :sm="{ span: 9, offset: 8 }"
+        :md="{ span: 7, offset: 8 }"
+        :lg="{ span: 7, offset: 8 }"
+        :xl="{ span: 6, offset: 9 }"
+      >
+        <el-input
+          :placeholder="$t('search.placeholder')"
+          v-model="keyword"
+          prefix-icon="el-icon-search"
+          clearable
+          @input="setKeyword"
+        >
+        </el-input>
+      </el-col>
+    </el-row>
   </div>
 </template>
