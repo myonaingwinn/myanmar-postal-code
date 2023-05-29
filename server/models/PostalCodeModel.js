@@ -1,9 +1,5 @@
 const { MongoClient } = require('mongodb');
-
-const LANGUAGE = Object.freeze({
-  EN: 'en',
-  MM: 'mm',
-});
+const LANGUAGE = require('../enums/LANGUAGE');
 
 class PostalCode {
   constructor(language, page, pageSize) {
