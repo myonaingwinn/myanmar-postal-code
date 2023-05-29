@@ -1,24 +1,18 @@
 import { defineStore } from 'pinia';
-import Cookies from 'js-cookie';
-import { getLanguage } from '../lang';
 
 const store = defineStore({
-  id: 'store',
+  id: 'languageStore',
   state: () => ({
-    language: getLanguage(),
+    currentLanguage: 'en',
   }),
   getters: {
-    language: (state) => state.language,
-  },
-  mutations: {
-    SET_LANGUAGE: (state, language) => {
-      state.language = language;
-      Cookies.set('language', language);
+    getLanguage() {
+      return this.currentLanguage;
     },
   },
   actions: {
-    setLanguage({ commit }, language) {
-      commit('SET_LANGUAGE', language);
+    setLanguage(language) {
+      this.currentLanguage = language;
     },
   },
 });

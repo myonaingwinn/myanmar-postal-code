@@ -1,26 +1,40 @@
 export default {
-  report: {
-    title: 'Report output​',
-    customer: 'Customer',
-    type: {
-      label: 'Report type',
-      list: 'Fuel consumption record (Listings)',
-      details: 'Fuel consumption record (Details)',
-      threeMonths: 'Fuel consumption record (3 Months)',
-      summaryReport: 'Fuel consumption record (Summary)',
+  el: {
+    empty: {
+      description: 'ဒေတာမရှိပါ',
     },
-    period: 'Period',
-    display: 'Display',
-    listings: {
-      name: 'Vehicle name',
-      efficiency: 'Previous month’s fuel efficiency',
-      remainingFuelPreviousMonth: 'Remaining fuel from the previous month',
-      refuelingVolume: 'Refueling volume for this month',
-      operatingHours: "Vehicle's operating hours",
-      fuelConsumption: 'Fuel consumption for this month',
-      remainingFuel: 'Remaining fuel for this month',
-      operatingDays: 'Vehicle’s operating days',
-      thisMonthFuelConsumption: "This month's fuel consumption",
+    pagination: {
+      total: 'စုစုပေါင်း',
+      pagesize: '/စာမျက်နှာ',
+      page: '',
+    },
+  },
+
+  search: {
+    placeholder: 'မြို့အမည်၊ ရပ်ကွက်အမည်တို့ဖြင့်ရှာဖွေပါ',
+  },
+
+  navbar: {
+    help: 'အကူအညီ',
+    feedback: 'သင့်ထင်မြင်ချက်အား ပြောပြရန်',
+    about: 'ဒီအပ်ပ်ရဲ့ အကြောင်း',
+  },
+
+  table: {
+    region: 'တိုင်းဒေသကြီး',
+    townOrTwnsp: 'မြို့ / မြို့နယ်',
+    quarterOrVillageTract: 'ရပ်ကွက် / ကျေးရွာအုပ်စု',
+    postalCode: 'စာတိုက်သင်္ကေတ',
+
+    tooltip: {
+      content: 'ကူးယူရန် နှိပ်ပါ',
+    },
+  },
+
+  home: {
+    notify: {
+      success: 'စာတိုက်သင်္ကေတ အား အောင်မြင်စွာ ကူးယူပြီးပါပြီ',
+      failed: 'ကူးယူမှု မအောင်မြင်ပါ။ ထပ်မံ၍ ကြိုးစားကြည့်ပါ',
     },
   },
 };
