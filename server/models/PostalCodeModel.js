@@ -44,11 +44,12 @@ class PostalCode {
 
       const count = await collection.countDocuments(query);
 
-      const result = await collection
-        .find(query)
-        .skip((this.page - 1) * this.pageSize)
-        .limit(this.pageSize)
-        .toArray();
+      const result = await this.searchWithPagination(
+        collection,
+        query,
+        this.page,
+        this.pageSize
+      );
 
       return {
         totalItems: count,
@@ -59,6 +60,21 @@ class PostalCode {
     } finally {
       await client.close();
     }
+  }
+
+  async searchWithPagination(collection, query, page, pageSize) {
+    let result = await collection
+      .find(query)
+      .skip((page - 1) * pageSize)
+      .limit(pageSize)
+      .toArray();
+
+    if (result.length < 1) {
+      result = await this.searchWithPagination(collection, query, 1, pageSize);
+      this.page = 1;
+    }
+
+    return result;
   }
 }
 
