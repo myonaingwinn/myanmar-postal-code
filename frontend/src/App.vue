@@ -11,7 +11,13 @@ export default {
 
 <template>
   <div class="app">
-    <NavBar />
-    <router-view />
+    <el-row>
+      <el-col>
+        <NavBar />
+      </el-col>
+      <el-col class="route-view">
+        <router-view />
+      </el-col>
+    </el-row>
   </div>
 </template>
