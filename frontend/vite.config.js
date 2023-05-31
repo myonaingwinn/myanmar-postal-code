@@ -21,6 +21,7 @@ export default defineConfig({
           'Quicksand',
           'Playfair Display',
           'Montserrat',
+          'Righteous',
         ],
       },
     }),

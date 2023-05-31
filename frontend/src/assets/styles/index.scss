@@ -1,18 +1,16 @@
 .app {
     .route-view {
-        background: #cecece81;
+        background: #c5d5e37a;
         padding: 3em 0;
 
     }
 
     .paddingBottom-EN {
         padding-bottom: 16.61vh;
-        color: green;
     }
 
     .paddingBottom-MM {
         padding-bottom: 16vh;
-        color: green;
     }
 
     .has-data {
@@ -24,12 +22,20 @@
         height: 55px;
         overflow: hidden;
         position: relative;
-        box-shadow: #40a0ff49 0px 20px 25px -5px, #40a0ff33 0px 10px 10px -5px;
+        box-shadow: #c7e3ff49 0px 20px 25px -5px, #2e96ff33 0px 10px 10px -5px;
 
         .app-name {
-            font-size: 20px;
+            font-family: Righteous;
+            font-size: 30px;
             font-weight: 800;
-            padding: 11px;
+            padding: 7px 7px 7px 14px;
+
+            background-color: #1c8af8bc;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: rgba(255, 255, 255, 0.5) 0px 3px 3px;
         }
 
         .nav-col {
@@ -41,11 +47,10 @@
         margin: 2em auto;
 
         th {
-            background: #56a3f033;
+            background: #d6e5f36a;
             color: #556;
 
             div {
-                font-family: Quicksand;
                 font-size: 16px;
             }
         }
