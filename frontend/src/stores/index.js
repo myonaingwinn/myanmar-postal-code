@@ -1,20 +1,37 @@
 import { defineStore } from 'pinia';
 
-const store = defineStore({
-  id: 'languageStore',
+export const useLanguageStore = defineStore({
+  id: 'useLanguageStore',
   state: () => ({
-    currentLanguage: 'en',
+    currentLanguage: localStorage.getItem('language'),
   }),
+
   getters: {
-    getLanguage() {
-      return this.currentLanguage;
-    },
+    getLanguage: (state) => state.currentLanguage,
   },
+
   actions: {
     setLanguage(language) {
-      this.currentLanguage = language;
+      this.$state.currentLanguage = language;
     },
   },
 });
 
-export default store;
+export const useTableStore = defineStore({
+  id: 'useTableStore',
+  state: () => ({
+    hasTableData: false,
+  }),
+
+  getters: {
+    getHasTableData() {
+      return this.hasTableData;
+    },
+  },
+
+  actions: {
+    setHasTableData(bool) {
+      this.hasTableData = bool;
+    },
+  },
+});

@@ -8,17 +8,11 @@ import App from './App.vue';
 import router from './router';
 
 import './assets/styles/index.scss';
+import { LANGUAGE } from './enums';
 
-const pinia = createPinia('languageStore');
-const languageValue = localStorage.getItem('language');
-
-if (languageValue) {
-  // Language value exists in localStorage, set it in the store
-  pinia.state.currentLanguage = languageValue;
-} else {
-  // Language value doesn't exist in localStorage, set a default language
-  localStorage.setItem('language', 'en');
-  pinia.state.currentLanguage = 'en';
+// set language if not exist
+if (!localStorage.getItem('language')) {
+  localStorage.setItem('language', LANGUAGE.EN);
 }
 
 Vue.use(PiniaVuePlugin).use(ElementUI, {
@@ -27,7 +21,7 @@ Vue.use(PiniaVuePlugin).use(ElementUI, {
 
 new Vue({
   router,
-  pinia,
+  pinia: createPinia(),
   i18n,
   render: (h) => h(App),
 }).$mount('#app');

@@ -14,13 +14,13 @@ class PostalCode {
 
     switch (language) {
       case LANGUAGE.EN:
-        collectionLanguage = 'en';
+        collectionLanguage = LANGUAGE.EN;
         break;
       case LANGUAGE.MM:
-        collectionLanguage = 'mm';
+        collectionLanguage = LANGUAGE.MM;
         break;
       default:
-        collectionLanguage = 'en'; // Default to English
+        collectionLanguage = LANGUAGE.EN; // Default to English
         break;
     }
 
