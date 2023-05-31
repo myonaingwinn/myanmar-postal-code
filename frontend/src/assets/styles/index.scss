@@ -1,8 +1,22 @@
 .app {
-    font-family: Poppins, Montserrat, 'Playfair Display', Nunito, Arial, sans-serif;
+    .route-view {
+        background: #cecece81;
+        padding: 3em 0;
 
-    .el-input__inner {
-        font-family: inherit;
+    }
+
+    .paddingBottom-EN {
+        padding-bottom: 16.61vh;
+        color: green;
+    }
+
+    .paddingBottom-MM {
+        padding-bottom: 16vh;
+        color: green;
+    }
+
+    .has-data {
+        padding-bottom: 16.6vh;
     }
 
     .navbar {
@@ -11,7 +25,6 @@
         overflow: hidden;
         position: relative;
         box-shadow: #40a0ff49 0px 20px 25px -5px, #40a0ff33 0px 10px 10px -5px;
-        margin: -7.6px -7px 60px;
 
         .app-name {
             font-size: 20px;
@@ -26,8 +39,6 @@
 
     .data-table {
         margin: 2em auto;
-        // min-width: 800px;
-        // width: 80%;
 
         th {
             background: #56a3f033;
@@ -39,11 +50,6 @@
             }
         }
     }
-
-    // Pagination
-    // .pagination {
-    //     width: 50%;
-    // }
 
     // Loading
     .loading-container {
@@ -62,26 +68,40 @@
         }
 
         .empty {
-            margin: 9em;
+            margin: 10em 10em 10.8em 10em;
         }
     }
 
-    // About
     .about,
     .home {
-        background: white;
-
         .content {
             box-shadow: 0 2px 4px #40a0ff6e, 0 0 6px #40a0ff42;
             border-radius: 8px;
             padding: 20px;
             overflow: auto;
+            background: white;
+        }
+
+        // pagination number
+        .number {
+            font-weight: normal;
         }
     }
 }
 
+* {
+    font-family: Poppins, Montserrat,
+        'Playfair Display',
+        Nunito,
+        Arial,
+        sans-serif;
+}
+
 .my-tooltip {
-    font-family: Poppins;
     font-size: 13px;
     border: 1px solid #409eff !important;
+}
+
+body {
+    margin: 0;
 }

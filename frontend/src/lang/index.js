@@ -3,6 +3,7 @@ import VueI18n from 'vue-i18n';
 import enLocale from './en';
 import mmLocale from './mm';
 import elementEnLocale from 'element-ui/lib/locale/lang/en'; // element-ui lang
+import { LANGUAGE } from '../enums';
 
 Vue.use(VueI18n);
 
@@ -30,7 +31,7 @@ export function getLanguage() {
       return locale;
     }
   }
-  return 'en';
+  return LANGUAGE.EN;
 }
 
 const i18n = new VueI18n({

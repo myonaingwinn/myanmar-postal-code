@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { useTableStore } from '../stores';
 
 export default {
   name: 'HomeView',
@@ -8,6 +9,8 @@ export default {
     DataTable: () => import('../components/DataTable.vue'),
   },
   data() {
+    const tableStore = useTableStore();
+
     return {
       loading: false,
       keyword: '',
@@ -17,6 +20,7 @@ export default {
         pageSize: 10,
         totalItems: 0,
       },
+      tableStore,
     };
   },
   methods: {
@@ -48,6 +52,8 @@ export default {
               this.pageData.totalItems = totalItems;
               this.pageData.currentPage = currentPage;
               this.pageData.pageSize = pageSize;
+
+              this.tableStore.setHasTableData(true);
             }
           })
           .catch((error) => {
@@ -57,6 +63,8 @@ export default {
               message: error.message,
               offset: 50,
             });
+
+            this.tableStore.setHasTableData(false);
           })
           .finally(() => {
             this.setLoading();
@@ -85,6 +93,8 @@ export default {
         pageSize: 10,
         totalItems: 0,
       };
+
+      this.tableStore.setHasTableData(false);
     },
 
     copyText(text) {
@@ -144,18 +154,22 @@ export default {
             :tableData="tableData"
             @copyText="copyText"
           />
-          <el-pagination
-            v-if="pageData.totalItems > 10"
-            @size-change="handleSizeChange"
-            @current-change="handlePageChange"
-            :current-page="pageData.currentPage"
-            :page-sizes="[10, 20, 30, 50]"
-            :page-size="pageData.pageSize"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="pageData.totalItems"
-            background
-            class="pagination"
-          ></el-pagination>
+          <el-row>
+            <el-col align="center">
+              <el-pagination
+                v-if="pageData.totalItems > 10"
+                @size-change="handleSizeChange"
+                @current-change="handlePageChange"
+                :current-page="pageData.currentPage"
+                :page-sizes="[10, 20, 30, 50]"
+                :page-size="pageData.pageSize"
+                layout="total, sizes, prev, pager, next, jumper"
+                :total="pageData.totalItems"
+                background
+                class="pagination"
+              ></el-pagination>
+            </el-col>
+          </el-row>
           <el-empty v-if="pageData.totalItems < 1" class="empty"></el-empty>
         </div>
       </el-col>
