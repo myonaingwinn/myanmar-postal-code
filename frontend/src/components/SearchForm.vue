@@ -20,9 +20,10 @@ export default {
 
         this.searchTimeout = setTimeout(() => {
           this.$emit('setKeyword', this.keyword.trim());
-        }, 500);
+        }, 1000);
       }
-      this.keyword = this.oldFilteredValue = filteredValue;
+
+      this.oldFilteredValue = filteredValue;
     },
   },
 };
