@@ -15,7 +15,7 @@ export default {
         ''
       );
 
-      if (filteredValue !== this.oldFilteredValue) {
+      if (filteredValue !== this.oldFilteredValue && this.keyword.trim()) {
         clearTimeout(this.searchTimeout);
 
         this.searchTimeout = setTimeout(() => {
