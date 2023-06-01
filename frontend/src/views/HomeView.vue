@@ -48,7 +48,9 @@ export default {
             if (res.data) {
               const { currentPage, pageSize, totalItems, data } = res.data;
 
-              this.tableStore.setTableData(data);
+              this.keyword
+                ? this.tableStore.setTableData(data)
+                : this.resetData();
               this.tableStore.setHasTableData(data.length > 0);
 
               this.pageData.totalItems = totalItems;
@@ -73,13 +75,12 @@ export default {
     },
 
     getKeyword(param) {
+      this.keyword = param;
+
       if (param.trim() !== '') {
-        this.keyword = param;
-        
         this.fetchData();
       }
-      
-      console.log('🚀 ~ file: HomeView.vue:77 ~ getKeyword ~ param.trim():', param.trim())
+
       this.resetData();
     },
 
