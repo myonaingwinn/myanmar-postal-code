@@ -17,6 +17,13 @@ export default {
     height="540"
     class="data-table"
   >
+    <!-- Scoped slot for empty table body -->
+    <template v-slot:empty>
+      <el-table-column>
+        <el-empty />
+      </el-table-column>
+    </template>
+
     <el-table-column prop="Region" :label="$t('table.region')" sortable>
     </el-table-column>
     <el-table-column
@@ -25,12 +32,14 @@ export default {
       sortable
     >
     </el-table-column>
+
     <el-table-column
       prop="Quarter / Village Tract"
       :label="$t('table.quarterOrVillageTract')"
       sortable
     >
     </el-table-column>
+
     <el-table-column
       prop="Postal Code"
       :label="$t('table.postalCode')"
