@@ -28,7 +28,14 @@
         <el-dropdown size="medium" split-button>
           {{ $t('navbar.help') }}
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>{{ $t('navbar.feedback') }}</el-dropdown-item>
+            <el-dropdown-item>
+              <a
+                href="mailto:myonaingwinn@ymail.ne.jp"
+                style="text-decoration: none; color: inherit"
+              >
+                {{ $t('navbar.feedback') }}
+              </a>
+            </el-dropdown-item>
             <el-dropdown-item divided>{{
               $t('navbar.about')
             }}</el-dropdown-item>
