@@ -48,15 +48,14 @@ export default {
           .then((res) => {
             if (res.data) {
               const { currentPage, pageSize, totalItems, data } = res.data;
-
-              this.keyword.trim().length > 0
-                ? this.tableStore.setTableData(data)
-                : this.resetData();
-              this.tableStore.setHasTableData(data.length > 0);
-
               this.pageData.totalItems = totalItems;
               this.pageData.currentPage = currentPage;
               this.pageData.pageSize = pageSize;
+
+              this.tableStore.setHasTableData(data.length > 0);
+              this.keyword.trim().length > 0
+                ? this.tableStore.setTableData(data)
+                : this.resetData();
             }
           })
           .catch((error) => {
