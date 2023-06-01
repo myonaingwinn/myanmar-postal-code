@@ -15,11 +15,11 @@ export default {
         ''
       );
 
-      if (filteredValue !== this.oldFilteredValue && this.keyword.trim()) {
+      if (filteredValue !== this.oldFilteredValue) {
         clearTimeout(this.searchTimeout);
 
         this.searchTimeout = setTimeout(() => {
-          this.$emit('setKeyword', this.keyword.trim());
+          this.$emit('setKeyword', this.keyword);
         }, 1000);
       }
 
