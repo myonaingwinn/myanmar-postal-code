@@ -151,7 +151,6 @@ export default {
         <search-form @setKeyword="getKeyword" />
         <div v-loading="loading" class="loading-container">
           <data-table
-            v-if="tableStore.hasTableData"
             :tableData="tableStore.getTableData"
             @copyText="copyText"
           />
@@ -171,7 +170,6 @@ export default {
               ></el-pagination>
             </el-col>
           </el-row>
-          <el-empty v-if="pageData.totalItems < 1" class="empty"></el-empty>
         </div>
       </el-col>
     </el-row>

@@ -1,7 +1,6 @@
 <script>
 import NavBar from './components/Navbar.vue';
-import { LANGUAGE } from './enums';
-import { useLanguageStore, useTableStore } from './stores';
+import { useTableStore } from './stores';
 
 export default {
   name: 'App',
@@ -9,12 +8,9 @@ export default {
     NavBar,
   },
   setup() {
-    const langStore = useLanguageStore();
     const tableStore = useTableStore();
 
     return {
-      LANGUAGE,
-      langStore,
       tableStore,
     };
   },
@@ -30,12 +26,7 @@ export default {
       <el-col
         :class="[
           'route-view',
-          langStore.getLanguage === LANGUAGE.EN
-            ? 'paddingBottom-EN'
-            : 'paddingBottom-MM',
-          tableStore.getHasTableData && langStore.getLanguage === LANGUAGE.MM
-            ? 'has-data'
-            : '',
+          tableStore.getHasTableData ? 'has-data' : 'no-data',
         ]"
       >
         <router-view />

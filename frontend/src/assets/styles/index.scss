@@ -5,12 +5,8 @@
 
     }
 
-    .paddingBottom-EN {
-        padding-bottom: 16.61vh;
-    }
-
-    .paddingBottom-MM {
-        padding-bottom: 16vh;
+    .no-data {
+        padding-bottom: 19.9vh;
     }
 
     .has-data {
@@ -43,8 +39,10 @@
         }
     }
 
-    .search-form input:focus {
-        background: #1c8af810;
+    .search-form {
+        input:focus {
+            background: #1c8af810;
+        }
     }
 
     .data-table {
@@ -74,10 +72,6 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-        }
-
-        .empty {
-            margin: 10em 10em 10.8em 10em;
         }
     }
 
