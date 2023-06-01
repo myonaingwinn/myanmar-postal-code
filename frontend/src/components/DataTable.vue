@@ -19,9 +19,7 @@ export default {
   >
     <!-- Scoped slot for empty table body -->
     <template v-slot:empty>
-      <el-table-column>
         <el-empty />
-      </el-table-column>
     </template>
 
     <el-table-column prop="Region" :label="$t('table.region')" sortable>
