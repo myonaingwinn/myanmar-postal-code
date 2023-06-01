@@ -123,7 +123,6 @@ export default {
     axiosParams() {
       const params = new URLSearchParams();
       params.append('keyword', this.keyword);
-      params.append('lang', this.$pinia.state.currentLanguage);
       params.append('page', this.pageData.currentPage);
       params.append('pageSize', this.pageData.pageSize);
       return params;
