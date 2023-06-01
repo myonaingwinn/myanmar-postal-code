@@ -43,6 +43,10 @@
         }
     }
 
+    .search-form input:focus {
+        background: #1c8af810;
+    }
+
     .data-table {
         margin: 2em auto;
 
