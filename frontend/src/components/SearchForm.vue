@@ -26,6 +26,9 @@ export default {
       this.oldFilteredValue = filteredValue;
     },
   },
+  mounted() {
+    this.$refs.searchRef.focus();
+  },
 };
 </script>
 
@@ -45,6 +48,7 @@ export default {
           prefix-icon="el-icon-search"
           clearable
           @input="setKeyword"
+          ref="searchRef"
         >
         </el-input>
       </el-col>
