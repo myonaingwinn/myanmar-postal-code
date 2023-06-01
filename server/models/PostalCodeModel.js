@@ -62,15 +62,27 @@ class PostalCode {
     }
   }
 
-  async searchWithPagination(collection, query, page, pageSize) {
+  async searchWithPagination(
+    collection,
+    query,
+    page,
+    pageSize,
+    isFirstCall = true
+  ) {
     let result = await collection
       .find(query)
       .skip((page - 1) * pageSize)
       .limit(pageSize)
       .toArray();
 
-    if (result.length < 1) {
-      result = await this.searchWithPagination(collection, query, 1, pageSize);
+    if (result.length < 1 && isFirstCall) {
+      result = await this.searchWithPagination(
+        collection,
+        query,
+        1,
+        pageSize,
+        false
+      );
       this.page = 1;
     }
 
