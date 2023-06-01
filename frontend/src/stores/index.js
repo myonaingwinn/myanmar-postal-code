@@ -20,6 +20,7 @@ export const useLanguageStore = defineStore({
 export const useTableStore = defineStore({
   id: 'useTableStore',
   state: () => ({
+    tableData: [],
     hasTableData: false,
   }),
 
@@ -27,11 +28,17 @@ export const useTableStore = defineStore({
     getHasTableData() {
       return this.hasTableData;
     },
+    getTableData() {
+      return this.tableData;
+    },
   },
 
   actions: {
     setHasTableData(bool) {
       this.hasTableData = bool;
+    },
+    setTableData(tableData) {
+      this.tableData = tableData;
     },
   },
 });
