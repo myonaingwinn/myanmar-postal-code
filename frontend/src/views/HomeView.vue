@@ -75,10 +75,11 @@ export default {
     getKeyword(param) {
       if (param.trim() !== '') {
         this.keyword = param;
-
+        
         this.fetchData();
       }
-
+      
+      console.log('🚀 ~ file: HomeView.vue:77 ~ getKeyword ~ param.trim():', param.trim())
       this.resetData();
     },
 
