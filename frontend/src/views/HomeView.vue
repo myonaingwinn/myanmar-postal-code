@@ -14,7 +14,6 @@ export default {
     return {
       loading: false,
       keyword: '',
-      tableData: [],
       pageData: {
         currentPage: 1,
         pageSize: 10,
@@ -48,12 +47,13 @@ export default {
           .then((res) => {
             if (res.data) {
               const { currentPage, pageSize, totalItems, data } = res.data;
-              this.tableData = data;
+
+              this.tableStore.setTableData(data);
+              this.tableStore.setHasTableData(data.length > 0);
+
               this.pageData.totalItems = totalItems;
               this.pageData.currentPage = currentPage;
               this.pageData.pageSize = pageSize;
-
-              this.tableStore.setHasTableData(true);
             }
           })
           .catch((error) => {
@@ -64,7 +64,7 @@ export default {
               offset: 50,
             });
 
-            this.tableStore.setHasTableData(false);
+            this.resetData();
           })
           .finally(() => {
             this.setLoading();
@@ -87,14 +87,14 @@ export default {
     },
 
     resetData() {
-      this.tableData = [];
+      this.tableStore.setTableData([]);
+      this.tableStore.setHasTableData(false);
+
       this.pageData = {
         currentPage: 1,
         pageSize: 10,
         totalItems: 0,
       };
-
-      this.tableStore.setHasTableData(false);
     },
 
     copyText(text) {
@@ -150,8 +150,8 @@ export default {
         <search-form @setKeyword="getKeyword" />
         <div v-loading="loading" class="loading-container">
           <data-table
-            v-if="tableData.length > 0"
-            :tableData="tableData"
+            v-if="tableStore.hasTableData"
+            :tableData="tableStore.getTableData"
             @copyText="copyText"
           />
           <el-row>
