@@ -48,6 +48,11 @@ app.get('/search', async (req, res) => {
     const page = parseInt(req.query.page) || 1; // Current page number
     const pageSize = parseInt(req.query.pageSize) || 10; // Number of items per page
 
+    if (!keyword || !keyword.trim().length > 0) {
+      // If keyword is missing or not valid, return an error response
+      return res.status(400).json({ error: 'Invalid keyword' });
+    }
+
     const postalCode = new PostalCode(language, page, pageSize);
 
     const query = {

@@ -39,7 +39,8 @@ export default {
 
     fetchData() {
       this.setLoading();
-      if (this.keyword) {
+
+      if (this.keyword.trim().length > 0) {
         axios
           .get(import.meta.env.VITE_BASE_URL + '/search', {
             params: this.axiosParams,
@@ -48,7 +49,7 @@ export default {
             if (res.data) {
               const { currentPage, pageSize, totalItems, data } = res.data;
 
-              this.keyword
+              this.keyword.trim().length > 0
                 ? this.tableStore.setTableData(data)
                 : this.resetData();
               this.tableStore.setHasTableData(data.length > 0);
@@ -75,9 +76,9 @@ export default {
     },
 
     getKeyword(param) {
-      this.keyword = param;
+      this.keyword = param.trim();
 
-      if (param.trim() !== '') {
+      if (this.keyword.length > 0) {
         this.fetchData();
       }
 
