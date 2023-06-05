@@ -4,6 +4,7 @@ import { useTableStore } from '../stores';
 
 export default {
   name: 'HomeView',
+  title: 'Ha',
   components: {
     SearchForm: () => import('../components/SearchForm.vue'),
     DataTable: () => import('../components/DataTable.vue'),
@@ -119,6 +120,11 @@ export default {
           });
         });
     },
+
+    updatePageTitle() {
+      const pageTitle = this.$t('home.title');
+      document.title = pageTitle;
+    },
   },
 
   computed: {
@@ -131,8 +137,10 @@ export default {
     },
   },
 
-  created() {
-    document.title = 'Myanmar Postal Code';
+  watch: {
+    '$i18n.locale': function () {
+      this.updatePageTitle();
+    },
   },
 };
 </script>
