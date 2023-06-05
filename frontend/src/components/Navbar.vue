@@ -25,8 +25,8 @@
         </el-dropdown>
       </el-col>
       <el-col :xs="8" :sm="5" :md="4" :lg="3" :xl="3" class="nav-col">
-        <el-dropdown size="medium" split-button>
-          {{ $t('navbar.help') }}
+        <el-dropdown size="medium" split-button @click="openDialog">
+          {{ $t('navbar.help.title') }}
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>
               <a
@@ -43,6 +43,7 @@
         </el-dropdown>
       </el-col>
     </el-row>
+    <help-dialog :visible.sync="dialogVisibilty" />
   </div>
 </template>
 
@@ -52,6 +53,9 @@ import { useLanguageStore } from '../stores';
 
 export default {
   name: 'NavBar',
+  components: {
+    HelpDialog: () => import('./HelpDialog.vue'),
+  },
   data() {
     const langStore = useLanguageStore();
 
@@ -69,7 +73,17 @@ export default {
       LANGUAGE,
       langStore,
       updateLanguageStore,
+      dialogVisibilty: false,
     };
+  },
+
+  methods: {
+    openDialog() {
+      this.dialogVisibilty = true;
+    },
+    closeDialog() {
+      this.dialogVisibilty = false;
+    },
   },
 };
 </script>

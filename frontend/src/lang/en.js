@@ -4,7 +4,17 @@ export default {
   },
 
   navbar: {
-    help: 'Help',
+    help: {
+      title: 'Help',
+      dialog: {
+        title: 'How to use this app',
+        content: `You can search for a Postal Code by using keywords such as "Region", "Town or Township", "Quarter or Village Tract", or "Postal Code" itself.<br />\
+          You don\'t need to enter the complete word; for example, searching "Mingalar" will give you results that start with "Mingalar" such as "Mingalartaungnyunt Township", and so on.<br /><br />\
+          If you\'re having trouble finding a specific area, you can try using "Myanmar input" for your search.<br /><br />\
+          ※Furthermore, you can conveniently copy a Postal Code by simply clicking on it.`,
+        btnTxt: 'OK',
+      },
+    },
     feedback: 'Feedback',
     about: 'About',
   },
