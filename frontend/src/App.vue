@@ -7,6 +7,29 @@ export default {
   components: {
     NavBar,
   },
+
+  data() {
+    return {
+      isAboutRoute: false,
+    };
+  },
+
+  created() {
+    this.updateRoute();
+  },
+
+  watch: {
+    $route() {
+      this.updateRoute();
+    },
+  },
+
+  methods: {
+    updateRoute() {
+      this.isAboutRoute = this.$route.path === '/about';
+    },
+  },
+
   setup() {
     const tableStore = useTableStore();
 
@@ -26,7 +49,8 @@ export default {
       <el-col
         :class="[
           'route-view',
-          tableStore.getHasTableData ? 'has-data' : 'no-data',
+          !isAboutRoute &&
+            (tableStore.getHasTableData ? 'has-data' : 'no-data'),
         ]"
       >
         <router-view />
