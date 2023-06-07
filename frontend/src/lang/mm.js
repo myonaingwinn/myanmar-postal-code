@@ -3,11 +3,6 @@ export default {
     empty: {
       description: 'ဒေတာမရှိပါ',
     },
-    pagination: {
-      total: 'စုစုပေါင်း',
-      pagesize: '/စာမျက်နှာ',
-      page: '',
-    },
   },
 
   search: {

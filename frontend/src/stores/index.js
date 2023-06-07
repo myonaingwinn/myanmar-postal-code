@@ -42,3 +42,53 @@ export const useTableStore = defineStore({
     },
   },
 });
+
+export const useCommonStore = defineStore({
+  id: 'useCommonStore',
+  state: () => ({
+    keyword: '',
+    pageData: {
+      currentPage: 1,
+      pageSize: 10,
+      totalItems: 0,
+    },
+  }),
+
+  getters: {
+    getKeyword() {
+      return this.keyword;
+    },
+
+    getPageData() {
+      return this.pageData;
+    },
+  },
+
+  actions: {
+    setKeyword(keyword) {
+      this.keyword = keyword;
+    },
+
+    setPageData(pageData) {
+      this.pageData = pageData;
+    },
+    setCurrentPage(currPage) {
+      this.pageData = {
+        ...this.pageData,
+        currentPage: currPage, // 2nd way
+      };
+    },
+    setPageSize(pageSize) {
+      this.pageData = {
+        ...this.pageData,
+        pageSize, // 1st way
+      };
+    },
+    setTotalItems(totalItems) {
+      this.pageData = {
+        ...this.pageData,
+        totalItems,
+      };
+    },
+  },
+});
