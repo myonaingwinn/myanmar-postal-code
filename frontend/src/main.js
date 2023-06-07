@@ -10,14 +10,18 @@ import router from './router';
 import './assets/styles/index.scss';
 import { LANGUAGE } from './enums';
 
+import VueSVGIcon from 'vue-svgicon';
+
 // set language if not exist
 if (!localStorage.getItem('language')) {
   localStorage.setItem('language', LANGUAGE.EN);
 }
 
-Vue.use(PiniaVuePlugin).use(ElementUI, {
-  i18n: (key, value) => i18n.t(key, value),
-});
+Vue.use(PiniaVuePlugin)
+  .use(ElementUI, {
+    i18n: (key, value) => i18n.t(key, value),
+  })
+  .use(VueSVGIcon);
 
 new Vue({
   router,

@@ -31,10 +31,16 @@ export default {
   },
 
   home: {
-    title: 'Myanmar Postal Code',
+    title: 'Home | Myanmar Postal Code',
     notify: {
       success: 'Postal Code is copied successfully.',
       failed: 'Failed to copy Postal Code. Please try again.',
     },
+  },
+
+  about: {
+    title: 'About | Myanmar Postal Code',
+    purpose: '',
+    author: '',
   },
 };

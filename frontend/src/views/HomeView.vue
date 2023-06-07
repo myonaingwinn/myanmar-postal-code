@@ -4,7 +4,6 @@ import { useTableStore } from '../stores';
 
 export default {
   name: 'HomeView',
-  title: 'Ha',
   components: {
     SearchForm: () => import('../components/SearchForm.vue'),
     DataTable: () => import('../components/DataTable.vue'),
@@ -141,6 +140,10 @@ export default {
     '$i18n.locale': function () {
       this.updatePageTitle();
     },
+  },
+
+  created() {
+    this.updatePageTitle();
   },
 };
 </script>
