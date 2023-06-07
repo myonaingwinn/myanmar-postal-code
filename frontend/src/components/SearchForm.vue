@@ -1,9 +1,13 @@
 <script>
+import { useCommonStore } from '../stores';
+
 export default {
   name: 'SearchForm',
   data() {
+    const commonStore = useCommonStore();
+
     return {
-      keyword: '',
+      keyword: commonStore.getKeyword,
       searchTimeout: null,
       oldFilteredValue: '',
     };
@@ -25,7 +29,12 @@ export default {
 
       this.oldFilteredValue = filteredValue;
     },
+
+    clear() {
+      this.$emit('setKeyword', this.keyword);
+    },
   },
+
   mounted() {
     this.$refs.searchRef.focus();
   },
@@ -48,6 +57,7 @@ export default {
           prefix-icon="el-icon-search"
           clearable
           @input="setKeyword"
+          @clear="clear"
           ref="searchRef"
         >
         </el-input>

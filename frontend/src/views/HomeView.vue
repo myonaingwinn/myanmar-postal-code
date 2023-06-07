@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios';
-import { useTableStore } from '../stores';
+import { useTableStore, useCommonStore } from '../stores';
 
 export default {
   name: 'HomeView',
@@ -10,16 +10,12 @@ export default {
   },
   data() {
     const tableStore = useTableStore();
+    const commonStore = useCommonStore();
 
     return {
       loading: false,
-      keyword: '',
-      pageData: {
-        currentPage: 1,
-        pageSize: 10,
-        totalItems: 0,
-      },
       tableStore,
+      commonStore,
     };
   },
   methods: {
@@ -28,19 +24,19 @@ export default {
     },
 
     handlePageChange(val) {
-      this.pageData.currentPage = val;
+      this.commonStore.setCurrentPage(val);
       this.fetchData();
     },
 
     handleSizeChange(val) {
-      this.pageData.pageSize = val;
+      this.commonStore.setPageSize(val);
       this.fetchData();
     },
 
     fetchData() {
-      this.setLoading();
+      if (this.commonStore.getKeyword.trim().length > 0) {
+        this.setLoading();
 
-      if (this.keyword.trim().length > 0) {
         axios
           .get(import.meta.env.VITE_BASE_URL + '/search', {
             params: this.axiosParams,
@@ -48,12 +44,14 @@ export default {
           .then((res) => {
             if (res.data) {
               const { currentPage, pageSize, totalItems, data } = res.data;
-              this.pageData.totalItems = totalItems;
-              this.pageData.currentPage = currentPage;
-              this.pageData.pageSize = pageSize;
+              this.commonStore.setPageData({
+                currentPage: currentPage,
+                pageSize: pageSize,
+                totalItems: totalItems,
+              });
 
               this.tableStore.setHasTableData(data.length > 0);
-              this.keyword.trim().length > 0
+              this.commonStore.getKeyword.trim().length > 0
                 ? this.tableStore.setTableData(data)
                 : this.resetData();
             }
@@ -72,12 +70,14 @@ export default {
             this.setLoading();
           });
       }
+
+      return;
     },
 
     getKeyword(param) {
-      this.keyword = param.trim();
+      this.commonStore.setKeyword(param.trim());
 
-      if (this.keyword.length > 0) {
+      if (this.commonStore.getKeyword.length > 0) {
         this.fetchData();
       }
 
@@ -92,11 +92,11 @@ export default {
       this.tableStore.setTableData([]);
       this.tableStore.setHasTableData(false);
 
-      this.pageData = {
+      this.commonStore.setPageData({
         currentPage: 1,
         pageSize: 10,
         totalItems: 0,
-      };
+      });
     },
 
     copyText(text) {
@@ -129,9 +129,9 @@ export default {
   computed: {
     axiosParams() {
       const params = new URLSearchParams();
-      params.append('keyword', this.keyword);
-      params.append('page', this.pageData.currentPage);
-      params.append('pageSize', this.pageData.pageSize);
+      params.append('keyword', this.commonStore.getKeyword);
+      params.append('page', this.commonStore.getPageData.currentPage);
+      params.append('pageSize', this.commonStore.getPageData.pageSize);
       return params;
     },
   },
@@ -168,14 +168,14 @@ export default {
           <el-row>
             <el-col align="center">
               <el-pagination
-                v-if="pageData.totalItems > 10"
+                v-if="commonStore.getPageData.totalItems > 10"
                 @size-change="handleSizeChange"
                 @current-change="handlePageChange"
-                :current-page="pageData.currentPage"
+                :current-page="commonStore.getPageData.currentPage"
                 :page-sizes="[10, 20, 30, 50]"
-                :page-size="pageData.pageSize"
+                :page-size="commonStore.getPageData.pageSize"
                 layout="total, sizes, prev, pager, next, jumper"
-                :total="pageData.totalItems"
+                :total="commonStore.getPageData.totalItems"
                 background
                 class="pagination"
               ></el-pagination>
