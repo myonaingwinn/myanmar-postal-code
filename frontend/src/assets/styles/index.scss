@@ -26,12 +26,16 @@
             font-weight: 800;
             padding: 7px 7px 7px 14px;
 
-            background-color: #1c8af8bc;
+            background-color: #0080ffcc;
             -webkit-background-clip: text;
             -moz-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: rgba(255, 255, 255, 0.5) 0px 3px 3px;
+            text-shadow: #ffffff96 0px 3px 3px;
+        }
+
+        a:-webkit-any-link {
+            text-decoration: none;
         }
 
         .nav-col {
@@ -90,6 +94,55 @@
             font-weight: normal;
         }
     }
+
+    .about {
+
+        h2,
+        .sub-heading {
+            color: #0080ffa2
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.5;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin: 0 10px 1.5em 10px;
+            padding: 1em 4em;
+            color: #4a4a52da;
+
+            .contact {
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                margin-top: 10px;
+                cursor: pointer;
+
+                &:hover {
+                    color: #0080ffa2;
+                    fill: #0080ffa2;
+                }
+
+                .icon {
+                    margin-right: 3px;
+                }
+
+                .icon-label {
+                    display: inline-block;
+                    vertical-align: middle;
+                    text-decoration: none;
+                    color: inherit;
+                }
+            }
+        }
+
+        .sub-heading {
+            text-align: left;
+            font-weight: 600;
+            padding-inline-start: 3%;
+        }
+    }
 }
 
 * {
@@ -103,6 +156,13 @@
 .my-tooltip {
     font-size: 13px;
     border: 1px solid #409eff !important;
+}
+
+.dd-help-menu {
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 }
 
 body {

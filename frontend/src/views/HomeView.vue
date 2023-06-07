@@ -119,6 +119,11 @@ export default {
           });
         });
     },
+
+    updatePageTitle() {
+      const pageTitle = this.$t('home.title');
+      document.title = pageTitle;
+    },
   },
 
   computed: {
@@ -131,8 +136,14 @@ export default {
     },
   },
 
+  watch: {
+    '$i18n.locale': function () {
+      this.updatePageTitle();
+    },
+  },
+
   created() {
-    document.title = 'Myanmar Postal Code';
+    this.updatePageTitle();
   },
 };
 </script>
