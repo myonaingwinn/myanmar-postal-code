@@ -31,7 +31,7 @@
           {{ $t('navbar.help.title') }}
           <el-dropdown-menu slot="dropdown" class="dd-help-menu">
             <el-dropdown-item>
-              <a href="mailto:myonaingwinn@ymail.ne.jp">
+              <a :href="getMailTo()">
                 {{ $t('navbar.feedback') }}
               </a>
             </el-dropdown-item>
@@ -51,6 +51,7 @@
 <script>
 import { LANGUAGE } from '../enums';
 import { useLanguageStore } from '../stores';
+import { getMailTo } from '../utils/helper';
 
 export default {
   name: 'NavBar',
@@ -75,6 +76,7 @@ export default {
       langStore,
       updateLanguageStore,
       dialogVisibilty: false,
+      getMailTo,
     };
   },
 
