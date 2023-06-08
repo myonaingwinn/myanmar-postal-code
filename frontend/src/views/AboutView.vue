@@ -44,8 +44,10 @@
           Have a nice day!
           <br />
           <span class="contact">
-            <svgicon icon="email" width="18" height="20" class="icon" /><a href="mailto:myonaingwinn@ymail.ne.jp"
-              class="icon-label">myonaingwinn@ymail.ne.jp</a>
+            <svgicon icon="email" width="18" height="20" class="icon" />
+            <a :href="getMailTo()" class="icon-label">
+              {{ getEmail() }}
+            </a>
           </span>
           <span class="contact">
             <svgicon icon="github" width="18" height="20" class="icon" /><a href="https://github.com/myonaingwinn"
@@ -59,9 +61,16 @@
 
 <script>
 import '../assets/compiled-icons'
+import { getMailTo, getEmail } from '../utils/helper';
 
 export default {
   name: 'AboutView',
+  data() {
+    return {
+      getMailTo,
+      getEmail,
+    }
+  },
   methods: {
     updatePageTitle() {
       const pageTitle = this.$t('about.title');
