@@ -3,6 +3,19 @@
         background: #c5d5e37a;
         padding: 3em 0;
 
+        .not-found {
+            padding-bottom: 15.5vh;
+
+            h1 {
+                font-size: 25px;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 18px;
+                color: #888;
+            }
+        }
     }
 
     .no-data {
@@ -104,10 +117,7 @@
 
         p {
             text-align: justify;
-            line-height: 1.5;
-            font-size: 16px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.2px;
             margin: 0 10px 1.5em 10px;
             padding: 1em 4em;
             color: #4a4a52da;
@@ -135,6 +145,13 @@
                     color: inherit;
                 }
             }
+        }
+
+        .not-found {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .sub-heading {
