@@ -43,4 +43,15 @@ export default {
     purpose: '',
     author: '',
   },
+
+  notFound: {
+    title: 'Not Found | Myanmar Postal Code',
+    notify: {
+      info: 'Redirecting to Homepage ...',
+    },
+    heading: '404 - Page Not Found',
+    message:
+      "The page you are looking for does not exist. <br />\
+        Let's bring you back to Home.",
+  },
 };

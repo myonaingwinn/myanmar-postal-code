@@ -17,6 +17,10 @@ const router = new VueRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue'),
     },
+    {
+      path: '*',
+      component: () => import('../components/NotFound.vue'),
+    },
   ],
 });
 
