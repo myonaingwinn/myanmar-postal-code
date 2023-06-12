@@ -1,5 +1,5 @@
 {
-  "name": "mmpostalcode",
+  "name": "myanmar-postal-codes-frontend",
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
