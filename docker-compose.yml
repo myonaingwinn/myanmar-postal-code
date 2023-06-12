@@ -4,9 +4,9 @@ services:
     image: node:18-alpine
     volumes:
       - ./frontend:/frontend
-      - ./frontend/.env:/frontend/.env
+      - ./.config:/.config
     working_dir: /frontend
-    command: sh -c "if [ ! -d 'node_modules' ]; then npm install; fi && if [ ! -f '.env' ]; then cp .env.example .env; fi && chmod 666 .env && npm run dev -- --host 0.0.0.0"
+    command: sh -c "npm run dev -- --host 0.0.0.0"
     ports:
       - "8080:5173"
     depends_on:
@@ -16,8 +16,8 @@ services:
     image: node:18-alpine
     volumes:
       - ./server:/server
-      - ./server/.env:/server/.env
+      - ./.config:/.config
     working_dir: /server
-    command: sh -c "if [ ! -d 'node_modules' ]; then npm install; fi && if [ ! -f '.env' ]; then cp .env.example .env; fi && chmod 666 .env && npm run dev"
+    command: sh -c "npm run dev"
     ports:
       - "3000:3000"

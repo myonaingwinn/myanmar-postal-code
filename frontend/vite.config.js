@@ -3,7 +3,7 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import legacy from '@vitejs/plugin-legacy';
 import vue2 from '@vitejs/plugin-vue2';
-import fontsPlugin from 'vite-plugin-fonts';
+import Unfonts from 'unplugin-fonts/vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +13,7 @@ export default defineConfig({
       targets: ['ie >= 11'],
       additionalLegacyPolyfills: ['regenerator-runtime/runtime'],
     }),
-    fontsPlugin({
+    Unfonts({
       google: {
         families: [
           'Nunito',
