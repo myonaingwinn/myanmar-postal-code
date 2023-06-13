@@ -17,7 +17,7 @@ echo -e "${RESET}"
 echo -e "\n${GREEN}"
 echo -e "Copying .env.example to .env ..."
 echo -e "${RESET}"
-cp .env.example .env && echo -e "${GREEN}Done." ||
+cp .env.example .env && chmod 666 .env && echo -e "${GREEN}Done." ||
     { echo -e "${RED}Error copying .env.example to .env" && exit 1; }
 echo -e "${RESET}"
 
