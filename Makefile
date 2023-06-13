@@ -1,5 +1,6 @@
 # setup
 setup: 
+	docker compose down
 	docker compose run --rm frontend sh -c "/.config/frontend.sh"
 	docker compose run --rm server sh -c "/.config/server.sh"
 
