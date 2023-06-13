@@ -20,7 +20,8 @@
         <div class="sub-heading">#Technical</div>
         <p>
           Initially, I started with a Laravel API, but I couldn't find a free hosting service for it (you can check that
-          version <a href="https://github.com/myonaingwinn/myanmar-postal-code/tags">here</a>). As a result, I switched to
+          version <a href="https://github.com/myonaingwinn/myanmar-postal-code/tags" target="blank">here</a>). As a
+          result, I switched to
           an Express API and deployed it on <a href="https://vercel.com" target='blank'>vercel.com</a>. <em>Please note
             that
             this app might be a bit slow due to the usage of a free hosting service.</em>
