@@ -1,3 +1,7 @@
+<img src="frontend/src/assets/icons/not-compile/postal-code-icon.svg" alt="Icon" width="150" height="150">
+<img src="frontend/src/assets/icons/not-compile/postal-code-envelope.svg" alt="Envelope" width="230" height="120">
+<img src="frontend/src/assets/icons/not-compile/postal-code-icon-beta.svg" alt="Beta Icon" width="125" height="125">
+
 <details>
     <summary>Table of Contents</summary>
     <ol>
