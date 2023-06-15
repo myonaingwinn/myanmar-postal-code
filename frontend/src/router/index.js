@@ -13,6 +13,11 @@ const router = new VueRouter({
       component: () => import('../views/HomeView.vue'),
     },
     {
+      path: '/ordinary',
+      name: 'ordinary',
+      component: () => import('../views/OrdinaryView.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue'),

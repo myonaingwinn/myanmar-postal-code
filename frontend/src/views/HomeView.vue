@@ -60,7 +60,7 @@ export default {
             // console.error('err', error);
             this.$notify.error({
               title: 'Error',
-              message: error.message,
+              message: error.response.data.error,
               offset: 50,
             });
 

@@ -1,4 +1,4 @@
-const LANGUAGE = require('../enums/LANGUAGE');
+const { LANGUAGE } = require('../enums');
 
 function getLanguage(input) {
   // Regular expression pattern to match Myanmar characters

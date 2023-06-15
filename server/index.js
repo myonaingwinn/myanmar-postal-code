@@ -3,6 +3,7 @@ const cors = require('cors');
 const { MongoClient } = require('mongodb');
 const PostalCode = require('./models/PostalCodeModel');
 const getLanguage = require('./utils/getLanguage');
+const { COLUMNS } = require('./enums');
 require('dotenv').config();
 
 const app = express();
@@ -68,7 +69,47 @@ app.get('/search', async (req, res) => {
     res.json(results);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'An error occurred while searching data' });
+    res.status(500).json({
+      error: 'An error occurred while searching data. Please try again.',
+    });
+  }
+});
+
+app.get('/ordinarySearch', async (req, res) => {
+  try {
+    const { regionColumn, region, town, quarter, language } = req.query;
+    console.log(
+      '🚀 ~ file: index.js:81 ~ app.get ~ regionColumn, region, town, quarter, language:',
+      regionColumn,
+      region,
+      town,
+      quarter,
+      language
+    );
+
+    if (!Object.values(COLUMNS).includes(regionColumn)) {
+      // If keyword is missing or not valid, return an error response
+      return res
+        .status(400)
+        .json({ error: 'Invalid parameters. Please try again.' });
+    }
+
+    let query = {};
+    if (regionColumn) query.regionColumn = regionColumn;
+    if (region) query.region = region;
+    if (town) query.town = town;
+    if (quarter) query.quarter = quarter;
+
+    const postalCode = new PostalCode(language);
+
+    const results = await postalCode.ordinarySearch(query);
+
+    res.json(results);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: 'An error occurred while searching data. Please try again.',
+    });
   }
 });
 

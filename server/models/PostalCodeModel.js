@@ -1,8 +1,8 @@
 const { MongoClient } = require('mongodb');
-const LANGUAGE = require('../enums/LANGUAGE');
+const { LANGUAGE } = require('../enums');
 
 class PostalCode {
-  constructor(language, page, pageSize) {
+  constructor(language, page = 1, pageSize = 10) {
     this.collectionName = this.getCollectionName(language);
     this.page = page;
     this.pageSize = pageSize;
@@ -28,18 +28,12 @@ class PostalCode {
   }
 
   async find(query) {
-    const uri = process.env.MONGODB_URI;
-    const dbName = process.env.DATABASE_NAME;
-
-    const client = new MongoClient(uri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const { client } = await this.getClientOrDB();
 
     try {
       await client.connect();
 
-      const db = client.db(dbName);
+      const { db } = await this.getClientOrDB();
       const collection = db.collection(this.collectionName);
 
       const count = await collection.countDocuments(query);
@@ -57,6 +51,8 @@ class PostalCode {
         currentPage: this.page,
         pageSize: this.pageSize,
       };
+    } catch (err) {
+      console.log(err);
     } finally {
       await client.close();
     }
@@ -87,6 +83,96 @@ class PostalCode {
     }
 
     return result;
+  }
+
+  async getClientOrDB() {
+    const uri = process.env.MONGODB_URI;
+    const client = new MongoClient(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+
+    const dbName = process.env.DATABASE_NAME;
+    const db = client.db(dbName);
+
+    return { client, db };
+  }
+
+  async ordinarySearch(query) {
+    const { client } = await this.getClientOrDB();
+    await client.connect();
+    const { db } = await this.getClientOrDB();
+    const collection = db.collection(this.collectionName);
+
+    try {
+      let regionList = [];
+      let townList = [];
+      let quarterList = [];
+      let postalCode = '';
+
+      // get region
+      if (query.regionColumn) {
+        regionList = await collection.distinct(query.regionColumn);
+      }
+
+      // get township
+      if (query.region) {
+        const cursor = collection.aggregate([
+          { $match: { Region: query.region } },
+          { $group: { _id: '$Town / Township' } },
+          { $project: { _id: 0, town: '$_id' } },
+          { $sort: { town: 1 } },
+        ]);
+
+        const cursorArr = await cursor.toArray();
+        townList = cursorArr.map((item) => item.town);
+
+        // get quarter
+        if (query.town) {
+          const cursor = collection.aggregate([
+            {
+              $match: {
+                Region: query.region,
+                'Town / Township': query.town,
+              },
+            },
+            { $group: { _id: '$Quarter / Village Tract' } },
+            { $project: { _id: 0, quarter: '$_id' } },
+            { $sort: { quarter: 1 } },
+          ]);
+
+          const cursorArr = await cursor.toArray();
+          quarterList = cursorArr.map((item) => item.quarter);
+
+          // get postal code
+          if (query.quarter) {
+            const pstlCode = await collection.findOne(
+              {
+                Region: query.region,
+                'Town / Township': query.town,
+                'Quarter / Village Tract': query.quarter,
+              },
+              {
+                projection: { 'Postal Code': 1 },
+              }
+            );
+
+            postalCode = pstlCode['Postal Code'];
+          }
+        }
+      }
+
+      return {
+        regionList: regionList,
+        townList: townList,
+        quarterList: quarterList,
+        postalCode: postalCode,
+      };
+    } catch (err) {
+      console.log(err);
+    } finally {
+      await client.close();
+    }
   }
 }
 

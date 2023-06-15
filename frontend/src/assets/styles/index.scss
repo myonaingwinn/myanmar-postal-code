@@ -93,6 +93,7 @@
     }
 
     .about,
+    .ordinary,
     .home {
         .content {
             box-shadow: 0 2px 4px #40a0ff6e, 0 0 6px #40a0ff42;
@@ -108,7 +109,8 @@
         }
     }
 
-    .about {
+    .about,
+    .ordinary {
 
         h2,
         .sub-heading {

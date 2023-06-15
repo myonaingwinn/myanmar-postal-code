@@ -92,3 +92,77 @@ export const useCommonStore = defineStore({
     },
   },
 });
+
+export const useOrdinaryStore = defineStore({
+  id: 'useOrdinaryStore',
+  state: () => ({
+    currentRegion: '',
+    currentTown: '',
+    currentQuarter: '',
+    postalCode: '',
+
+    regionList: [],
+    townList: [],
+    quarterList: [],
+  }),
+
+  getters: {
+    getCurrentRegion() {
+      return this.currentRegion;
+    },
+
+    getCurrentTown() {
+      return this.currentTown;
+    },
+
+    getCurrentQuarter() {
+      return this.currentQuarter;
+    },
+
+    getPostalCode() {
+      return this.postalCode;
+    },
+
+    getRegionList() {
+      return this.regionList;
+    },
+
+    getTownList() {
+      return this.townList;
+    },
+
+    getQuarterList() {
+      return this.quarterList;
+    },
+  },
+
+  actions: {
+    setCurrentRegion(region) {
+      this.currentRegion = region;
+    },
+
+    setCurrentTown(town) {
+      this.currentTown = town;
+    },
+
+    setCurrentQuarter(quarter) {
+      this.currentQuarter = quarter;
+    },
+
+    setPostalCode(postalCode) {
+      this.postalCode = postalCode;
+    },
+
+    setRegionList(regionList) {
+      this.regionList = regionList;
+    },
+
+    setTownList(townList) {
+      this.townList = townList;
+    },
+
+    setQuarterList(quarterList) {
+      this.quarterList = quarterList;
+    },
+  },
+});
